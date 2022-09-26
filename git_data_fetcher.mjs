@@ -1,9 +1,27 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
 
+const ownersToIgnore = [
+  "TheJaeLal",
+  "meshde",
+  "deadlyvipers",
+  "firstcontributions",
+  "vedipen"
+];
+
+const organizationsContributed = [];
+
+function addOrganizationsFromRepositories (repos) {
+  organizationsContributed.push(
+    ...repos
+    .filter(({ data }) => data.owner.__typename === "Organization")
+    .map(({ data, timestamp }) => ({ data: data.owner, timestamp }))
+  )
+}
+
 const openSource = {
   githubConvertedToken: "Your Github Token Here",
-  githubUserName: "Your Github Username Here",
+  githubUserName: "meshde",
 };
 
 const query_pr = {
@@ -34,6 +52,7 @@ const query_pr = {
 	            avatarUrl
 	            login
 	            url
+		    __typename
 	          }
 	        }
       }
@@ -70,29 +89,13 @@ const query_issue = {
             login
             avatarUrl
             url
+	    __typename
           }
         }
       }
     }
   }
 
-	}`,
-};
-
-const query_org = {
-  query: `query{
-	user(login: "${openSource.githubUserName}") {
-	    repositoriesContributedTo(last: 100){
-	      totalCount
-	      nodes{
-	        owner{
-	          login
-	          avatarUrl
-	          __typename
-	        }
-	      }
-	    }
-	  }
 	}`,
 };
 
@@ -130,7 +133,7 @@ const headers = {
   Authorization: "bearer " + openSource.githubConvertedToken,
 };
 
-fetch(baseUrl, {
+const prFetchPromise = fetch(baseUrl, {
   method: "POST",
   headers: headers,
   body: JSON.stringify(query_pr),
@@ -139,12 +142,13 @@ fetch(baseUrl, {
   .then((txt) => {
     const data = JSON.parse(txt);
     var cropped = { data: [] };
-    cropped["data"] = data["data"]["user"]["pullRequests"]["nodes"];
+    cropped["data"] = data["data"]["user"]["pullRequests"]["nodes"]
+      .filter((x) => !ownersToIgnore.includes(x.baseRepository.owner.login));
 
     var open = 0;
     var closed = 0;
     var merged = 0;
-    for (var i = 0; i < cropped["data"].length; i++) {
+    for (let i = 0; i < cropped["data"].length; i++) {
       if (cropped["data"][i]["state"] === "OPEN") open++;
       else if (cropped["data"][i]["state"] === "MERGED") merged++;
       else closed++;
@@ -165,10 +169,15 @@ fetch(baseUrl, {
         }
       }
     );
-  })
-  .catch((error) => console.log(JSON.stringify(error)));
 
-fetch(baseUrl, {
+    addOrganizationsFromRepositories(cropped.data.map((x) => ({
+      data: x.baseRepository,
+      timestamp: x.createdAt,
+    })));
+  })
+  .catch((error) => console.log(error));
+
+const issueFetchPromise = fetch(baseUrl, {
   method: "POST",
   headers: headers,
   body: JSON.stringify(query_issue),
@@ -177,7 +186,8 @@ fetch(baseUrl, {
   .then((txt) => {
     const data = JSON.parse(txt);
     var cropped = { data: [] };
-    cropped["data"] = data["data"]["user"]["issues"]["nodes"];
+    cropped["data"] = data["data"]["user"]["issues"]["nodes"]
+      .filter((x) => !ownersToIgnore.includes(x.repository.owner.login))
 
     var open = 0;
     var closed = 0;
@@ -200,45 +210,11 @@ fetch(baseUrl, {
         }
       }
     );
-  })
-  .catch((error) => console.log(JSON.stringify(error)));
 
-fetch(baseUrl, {
-  method: "POST",
-  headers: headers,
-  body: JSON.stringify(query_org),
-})
-  .then((response) => response.text())
-  .then((txt) => {
-    const data = JSON.parse(txt);
-    const orgs = data["data"]["user"]["repositoriesContributedTo"]["nodes"];
-    var newOrgs = { data: [] };
-    for (var i = 0; i < orgs.length; i++) {
-      var obj = orgs[i]["owner"];
-      if (obj["__typename"] === "Organization") {
-        var flag = 0;
-        for (var j = 0; j < newOrgs["data"].length; j++) {
-          if (JSON.stringify(obj) === JSON.stringify(newOrgs["data"][j])) {
-            flag = 1;
-            break;
-          }
-        }
-        if (flag === 0) {
-          newOrgs["data"].push(obj);
-        }
-      }
-    }
-
-    console.log("Fetching the Contributed Organization Data.\n");
-    fs.writeFile(
-      "./src/shared/opensource/organizations.json",
-      JSON.stringify(newOrgs),
-      function (err) {
-        if (err) {
-          console.log(err);
-        }
-      }
-    );
+    addOrganizationsFromRepositories(cropped.data.map((x) => ({
+      data: x.repository,
+      timestamp: x.createdAt,
+    })));
   })
   .catch((error) => console.log(JSON.stringify(error)));
 
@@ -265,7 +241,6 @@ fetch(baseUrl, {
   .then((response) => response.text())
   .then((txt) => {
     const data = JSON.parse(txt);
-    // console.log(txt);
     const projects = data["data"]["user"]["pinnedItems"]["nodes"];
     var newProjects = { data: [] };
     for (var i = 0; i < projects.length; i++) {
@@ -301,3 +276,21 @@ fetch(baseUrl, {
   .catch((error) =>
     console.log("Error occured in pinned projects 2", JSON.stringify(error))
   );
+
+(async () => {
+  await Promise.all([prFetchPromise, issueFetchPromise]);
+  const organizations = organizationsContributed
+    .sort((a,b) => {
+      if (a.timestamp > b.timestamp) {
+	return -1;
+      } else if (a.timestamp === b.timestamp) {
+	return 0;
+      }
+      return 1;
+    })
+    .reduce((acc, x) => [...acc, ...(acc.find((y) => y.login === x.data.login) ? [] : [x.data])], [])
+  fs.writeFileSync(
+    "./src/shared/opensource/organizations.json",
+    JSON.stringify({ data: organizations })
+  );
+})()

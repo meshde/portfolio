@@ -30,8 +30,11 @@
   margin-top: 20px;
 }
 
+.button-greeting-div .resume-button .main-button {
+  margin-left: 1rem;
+}
+
 .greeting-text {
-  margin-top: 80px;
   font-size: 70px;
   line-height: 1.1;
   font-family: "Google Sans Bold";
@@ -53,6 +56,13 @@
 .greeting-image-div > * {
   max-width: 100%;
   height: auto;
+}
+
+.greeting-image-div img {
+  height: 55%;
+  width: 50%;
+  margin-left: 30%;
+  border-radius: 50%;
 }
 
 /* Media Query */

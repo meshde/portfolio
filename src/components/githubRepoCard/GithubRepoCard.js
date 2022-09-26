@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import ProjectLanguages from "../../components/projectLanguages/ProjectLanguages";
 import "./GithubRepoCard.css";
 import { Fade } from "react-reveal";
@@ -39,7 +40,7 @@ export default function GithubRepoCard({ repo, theme }) {
               className="repo-creation-date subTitle"
               style={{ color: theme.secondaryText }}
             >
-              Created on {repo.createdAt.split("T")[0]}
+              Created on {moment(repo.createdAt).format("LL")}
             </p>
             <ProjectLanguages
               className="repo-languages"

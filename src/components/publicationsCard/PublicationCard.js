@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import "./PublicationCard.css";
 import { Fade } from "react-reveal";
 
@@ -28,7 +29,8 @@ export default function PublicationCard({ pub, theme }) {
               className="publication-creation-date subTitle"
               style={{ color: theme.secondaryText }}
             >
-              Published on {pub.createdAt.split("T")[0]}
+              Published on <b>{moment(pub.createdAt).format("LL")}</b> in{" "}
+              <b>{pub.publication}</b> by <b>{pub.publisher}</b>
             </p>
           </div>
           {/* <div className="repo-stats">
