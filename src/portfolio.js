@@ -329,93 +329,128 @@ const experience = {
   subtitle: "",
   description: "",
   header_image_path: "experience.svg",
-  sections: [
+  experiences: [
     {
-      title: "Work",
-      experiences: [
+      title: "Engineering Lead",
+      company: "Capbase, Inc.",
+      company_url: "https://capbase.com/",
+      logo_path: "capbase.png",
+      duration: "April 2021 - Present",
+      location: "Remote",
+      bulletList: [
         {
-          title: "Engineering Lead",
-          company: "Capbase, Inc.",
-          company_url: "https://capbase.com/",
-          logo_path: "capbase.png",
-          duration: "April 2021 - PRESENT",
-          location: "Remote",
-          description: `⇨ Responsibilities (apart from the ones I had as a Senior Engineer):
-          • Lead projects to fruition with engineering teams of varying sizes ranging from 3 to 7.
-          • Active involvement in product ideation and planning, primarily to evaluate the technical feasibility of proposed features/product solutions and to scope out & design the architecture of the implementation of the same.
-          • Lead the engineering side of the customer support team.
-          • Team Management & Development: Conduction of bi-weekly one-on-ones with each team member and conduction of weekly workshop/Q&A sessions covering the technical knowledge base of the platform and other general topics, such as AWS.
-
-          ⇨ Notable Contributions
-          • Evangelised the use of unit and automated tests to cover bugs that were being fixed & as a means of specifications for new features in the team.
-        • Ideated & developed or led the development of numerous admin tools that enabled the customer support team and general engineers to investigate and resolve user issues without needing full-blown production access.`,
-          color: "#0879bf",
+          key:
+            "Responsibilities (apart from the ones I had as a Senior Engineer)",
+          value: [
+            "Lead projects to fruition with engineering teams of varying sizes ranging from 3 to 7.",
+            "Active involvement in product ideation and planning, primarily to evaluate the technical feasibility of proposed features/product solutions and to scope out & design the architecture of the implementation of the same.",
+            "Lead the engineering side of the customer support team.",
+            "Team Management & Development: Conduction of bi-weekly one-on-ones with each team member and conduction of weekly workshop/Q&A sessions covering the technical knowledge base of the platform and other general topics, such as AWS.",
+          ],
         },
         {
-          title: "Senior Software Engineer",
-          company: "Capbase, Inc.",
-          company_url: "https://capbase.com/",
-          logo_path: "capbase.png",
-          duration: "March 2020 - April 2021",
-          location: "Remote",
-          description: `⇨ Responsibilities:
-          • Design & development of a SaaS platform with React as the frontend and AWS Appsync (GraphQL) and AWS Lambda (Node.js runtime) as the backend. The project involved the use of many other AWS services such as DynamoDB, S3, SQS, CloudWatch Insights, OpenSearch (ElasticSearch), Cognito, IAM, etc. The deployment and orchestration of the various AWS resources was done using AWS Amplify.
-          • Bi-weekly Release Management.
-          • Production & user support. Being the sole engineer with access to production, was responsible for investigating and resolving bugs & other issues that popped up for users and/or in the deployment process.
-
-          ⇨ Notable Contributions:
-          • Identified and implemented optimisations in the core backend process leading to a speedup of about 50%.
-          • Fixed more than a few hard-to-debug and highly intermittent bugs.
-        • Ideated and delivered an admin tool allowing customer support personnel to have read-only access to a particular user's view of the product. This led to the support team having more context of the user's issues thereby leading to faster resolution and happy customers.`,
-          color: "#0879bf",
-        },
-        {
-          title: "Web Developer L2",
-          company: "Media.net",
-          company_url: "https://www.media.net",
-          logo_path: "media-net.png",
-          duration: "August 2018 - March 2020",
-          location: "Mumbai, Maharashtra",
-          description: `⇨ Responsibilities:
-          • Design, development, and deployment of build processes responsible for the automated compilation of templated Windows and macOS desktop applications. 
-          • Development of features and fixes for an application distribution platform.
-          • Research and rapid development of Proof of Concepts for new features.
-
-          ⇨ Notable Contributions:
-          • Implemented a highly reliable technique for user attribution that could embed user information in a digitally signed Windows executable file without breaking the signature.
-          • Navigated the Chromium codebase to build a custom browser focused on search monetisation.
-          • Conducted live and video courses on Web Fundamentals. The course was designed to cover the intricacies of widely used concepts of JavaScript and CSS that are commonly misunderstood amongst fresh college pass outs.
-
-          ⇨ Team Development:
-          • Conducted thorough reviews and encouraged the use of best practices in terms of code quality and usage of git in a team of four. 
-          • Taught my team how to circumvent common and uncommon blunders associated with version control.
-          • Automated many mundane development tasks, thereby reducing the team’s development time and effort.`,
-          color: "#fc1f20",
-        },
-        {
-          title: "Freelance Software Engineer",
-          company: "Topcoder",
-          company_url: "https://www.topcoder.com/",
-          logo_path: "topcoder.svg",
-          duration: "December 2018 - March 2020",
-          location: "Remote",
-          description: `Topcoder is a crowdsourcing company with an open global community of designers, developers, data scientists, and competitive programmers. Topcoder pays community members for their work on the projects and sells community services to clients.
-
-            Part of the Topcoder community as a developer, actively working on the software development projects hosted on the platform. Community members participate and submit solutions to the open projects, the submissions are then scored on the basis of parameters such as whether or not the requirements are fulfilled, the usage of best practices, maintainability of the code, code coverage, security considerations, etc. The top submissions are heavily compensated.
-
-            ⇨ Notable Achievements:
-          • As of August 2019, have a rating of 1525, making me a yellow coder and putting me in the top 20% of developers at Topcoder.
-            • Worked on 15 different projects, with a success (score of 80+ out of 100) rate of 85.71% and average placement of 3.21
-          • Qualified for TCO19 India Regionals by being in the top 20 developers from India during the period of Feb 2019 - May 2019
-
-          ⇨ Few Projects:
-          • Created a command-line interface tool using Node.js that could compress the specified directory into the ZIP file format and upload it to Topcoder as a challenge submission.
-            • Contributed to a hybrid mobile application project created using the Xamarin toolkit and the .NET framework using C#.
-            • Contributed to many of Topcoder’s internal APIs, Kafka event processors and TopcoderX, the front-end application used by clients to create challenges/tasks on the crowd-sourcing platform. These were implemented using Node.js and React.js
-          • Created a Flask API server and automation scripts to interact with AWS in Python.`,
-          color: "#fc1f20",
+          key: "Notable Contributions",
+          value: [
+            "Evangelised the use of unit and automated tests to cover bugs that were being fixed & as a means of specifications for new features in the team.",
+            "Ideated & developed or led the development of numerous admin tools that enabled the customer support team and general engineers to investigate and resolve user issues without needing full-blown production access.",
+          ],
         },
       ],
+      description: `Promoted to the role of Engineering Lead which was a mix of Senior Engineer, Software Architect, Team Lead, Mentor & Project Manager.`,
+      color: "#0879bf",
+    },
+    {
+      title: "Senior Software Engineer",
+      company: "Capbase, Inc.",
+      company_url: "https://capbase.com/",
+      logo_path: "capbase.png",
+      duration: "March 2020 - April 2021",
+      location: "Remote",
+      bulletList: [
+        {
+          key: "Responsibilities",
+          value: [
+            "Design & development of a SaaS platform with React as the frontend and AWS Appsync (GraphQL) and AWS Lambda (Node.js runtime) as the backend. The project involved the use of many other AWS services such as DynamoDB, S3, SQS, CloudWatch Insights, OpenSearch (ElasticSearch), Cognito, IAM, etc. The deployment and orchestration of the various AWS resources was done using AWS Amplify.",
+            "Bi-weekly Release Management.",
+            "Production & user support. Being the sole engineer with access to production, was responsible for investigating and resolving bugs & other issues that popped up for users and/or in the deployment process.",
+          ],
+        },
+        {
+          key: "Notable Contributions",
+          value: [
+            "Identified and implemented optimisations in the core backend process leading to a speedup of about 50%.",
+            "Fixed more than a few hard-to-debug and highly intermittent bugs.",
+            "Ideated and delivered an admin tool allowing customer support personnel to have read-only access to a particular user's view of the product. This led to the support team having more context of the user's issues thereby leading to faster resolution and happy customers.",
+          ],
+        },
+      ],
+      description: `Capbase is a digital governance SaaS for startups built using React, AWS Lambda (Node.js), AWS DynamoDB, AWS AppSync and a host of other AWS services.`,
+      color: "#0879bf",
+    },
+    {
+      title: "Web Developer L2",
+      company: "Media.net",
+      company_url: "https://www.media.net",
+      logo_path: "media-net.png",
+      duration: "August 2018 - March 2020",
+      location: "Mumbai, Maharashtra",
+      bulletList: [
+        {
+          key: "Responsibilities",
+          value: [
+            "Design, development, and deployment of build processes responsible for the automated compilation of templated Windows and macOS desktop applications.",
+            "Development of features and fixes for an application distribution platform.",
+            "Research and rapid development of Proof of Concepts for new features.",
+          ],
+        },
+        {
+          key: "Notable Contributions",
+          value: [
+            "Implemented a highly reliable technique for user attribution that could embed user information in a digitally signed Windows executable file without breaking the signature.",
+            "Navigated the Chromium codebase to build a custom browser focused on search monetisation.",
+            "Conducted live and video courses on Web Fundamentals. The course was designed to cover the intricacies of widely used concepts of JavaScript and CSS that are commonly misunderstood amongst fresh college pass outs.",
+          ],
+        },
+        {
+          key: "Team Development",
+          value: [
+            "Conducted thorough reviews and encouraged the use of best practices in terms of code quality and usage of git in a team of four.",
+            "Taught my team how to circumvent common and uncommon blunders associated with version control.",
+            "Automated many mundane development tasks, thereby reducing the team’s development time and effort.",
+          ],
+        },
+      ],
+      description: `Media.net is a technology company comprising of 1250+ employees focused on developing innovative monetization products for digital publishers and advertisers. I was part of the search monetization team which involved building products using a range of technologies such as PHP, Node.js, browser extensions, .NET, Swift, etc.`,
+      color: "#fc1f20",
+    },
+    {
+      title: "Freelance Software Engineer",
+      company: "Topcoder",
+      company_url: "https://www.topcoder.com/",
+      logo_path: "topcoder.svg",
+      duration: "December 2018 - March 2020",
+      location: "Remote",
+      bulletList: [
+        {
+          key: "Notable Contributions/Achievements",
+          value: [
+            "Have a rating of 1749, making me a yellow coder and putting me in the top 20% of developers at Topcoder.",
+            "Worked on 15 different projects, with a success (score of 80+ out of 100) rate of 85.71% and average placement of 3.21.",
+            "Qualified for TCO19 India Regionals by being in the top 20 developers from India during the period of Feb 2019 - May 2019.",
+          ],
+        },
+        {
+          key: "Few Projects",
+          value: [
+            "Created a command-line interface tool using Node.js that could compress the specified directory into the ZIP file format and upload it to Topcoder as a challenge submission.",
+            "Contributed to a hybrid mobile application project created using the Xamarin toolkit and the .NET framework using C#.",
+            "Contributed to many of Topcoder’s internal APIs, Kafka event processors and TopcoderX, the front-end application used by clients to create challenges/tasks on the crowd-sourcing platform. These were implemented using Node.js and React.js.",
+            "Created a Flask API server and automation scripts to interact with AWS in Python.",
+          ],
+        },
+      ],
+      description: `Topcoder is a crowdsourcing company with an open global community of designers, developers, data scientists, and competitive programmers. Topcoder pays community members for their work on the projects and sells community services to clients. I was part of the Topcoder community as a developer, actively working on the software development projects hosted on the platform. Community members participate and submit solutions to the open projects, the submissions are then scored on the basis of parameters such as whether or not the requirements are fulfilled, the usage of best practices, maintainability of the code, code coverage, security considerations, etc. The top submissions are heavily compensated.`,
+      color: "#fc1f20",
     },
   ],
 };

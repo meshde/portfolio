@@ -160,3 +160,11 @@
     text-align: justify;
   }
 }
+
+.bullet-key > li + li {
+  margin-top: 2%;
+}
+
+.bullet-value {
+  margin-top: 1%;
+}

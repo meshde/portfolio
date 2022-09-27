@@ -6,10 +6,7 @@ class ExperienceCard extends Component {
     const experience = this.props.experience;
     const theme = this.props.theme;
     return (
-      <div
-        className="experience-card"
-        style={{ border: `1px solid ${experience["color"]}` }}
-      >
+      <div className="experience-card">
         <div className="experience-card-logo-div">
           <img
             className="experience-card-logo"
@@ -59,6 +56,18 @@ class ExperienceCard extends Component {
             style={{ color: theme.text }}
           >
             {experience["description"]}
+            <ul className="bullet-key">
+              {(experience.bulletList || []).map((bullet) => (
+                <li>
+                  <b>{bullet.key}</b>
+                  <ul className="bullet-value">
+                    {bullet.value.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
           </p>
         </div>
       </div>

@@ -2,6 +2,10 @@
   margin: 50px;
 }
 
+.experience-accord .experience-card {
+  margin-top: 5%;
+}
+
 .accord-panel {
   font-family: "Google Sans Regular";
 }
