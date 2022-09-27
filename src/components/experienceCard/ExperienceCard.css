@@ -161,10 +161,6 @@
   }
 }
 
-.bullet-key > li + li {
+.experience-card-description > div + div {
   margin-top: 2%;
-}
-
-.bullet-value {
-  margin-top: 1%;
 }
