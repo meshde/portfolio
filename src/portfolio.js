@@ -18,7 +18,7 @@ const seo = {
 //Home Page
 const greeting = {
   title: "Mehmood S. Deshmukh",
-  logo_name: "AshutoshHathidara",
+  logo_name: "Mehmood S. Deshmukh",
   nickname: "meshde",
   subTitle:
     "A Software Developer who loves building things in Python & Node.js and scripting in bash",
