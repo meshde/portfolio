@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
+import { Experience, Theme } from "../../types";
+
 import "./ExperienceCard.css";
 
-class ExperienceCard extends Component {
-  render() {
-    const experience = this.props.experience;
-    const theme = this.props.theme;
-    return (
+type Props = { experience: Experience, theme: Theme; };
+const ExperienceCard:React.FC<Props> = ({ experience, theme })=>
+    (
       <div className="experience-card">
         <div className="experience-card-logo-div">
           <img
@@ -72,7 +72,5 @@ class ExperienceCard extends Component {
         </div>
       </div>
     );
-  }
-}
 
 export default ExperienceCard;

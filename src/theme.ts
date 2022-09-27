@@ -1,4 +1,5 @@
-// theme.js
+import { Theme } from "./types";
+
 export const blueTheme = {
   body: "#EDF9FE",
   text: "#001C55",
@@ -119,4 +120,4 @@ export const orangeTheme = {
   headerColor: "#FF6B3577",
 };
 
-export const chosenTheme = blueTheme;
+export const chosenTheme: Theme = blueTheme;

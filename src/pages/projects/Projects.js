@@ -11,7 +11,7 @@ import {
   projectsHeader,
   publicationsHeader,
   publications,
-} from "../../portfolio.js";
+} from "../../portfolio";
 import ProjectsData from "../../shared/opensource/projects.json";
 import "./Projects.css";
 import ProjectsImg from "./ProjectsImg";

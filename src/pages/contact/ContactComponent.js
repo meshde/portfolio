@@ -8,7 +8,7 @@ import BlogsImg from "./BlogsImg";
 import AddressImg from "./AddressImg";
 import { Fade } from "react-reveal";
 import "./ContactComponent.css";
-import { greeting, contactPageData } from "../../portfolio.js";
+import { greeting, contactPageData } from "../../portfolio";
 
 const ContactData = contactPageData.contactSection;
 const blogSection = contactPageData.blogSection;

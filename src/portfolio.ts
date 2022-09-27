@@ -1,3 +1,4 @@
+import { Experience } from "./types";
 /* Change this file to get your personal Porfolio */
 
 // Website related settings
@@ -324,7 +325,15 @@ const certifications = {
 };
 
 // Experience Page
-const experience = {
+type ExperiencePage = {
+  title: string;
+  subtitle: string;
+  description: string;
+  header_image_path: string;
+  experiences: Experience[];
+};
+
+const experience: ExperiencePage = {
   title: "Experience",
   subtitle: "",
   description: "",
