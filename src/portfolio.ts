@@ -393,7 +393,7 @@ const experience: ExperiencePage = {
           ],
         },
       ],
-      description: `Capbase is a digital governance SaaS for startups built using React, AWS Lambda (Node.js), AWS DynamoDB, AWS AppSync and a host of other AWS services.`,
+      description: `Capbase is a digital governance SaaS for setting up and managing startups.  Incorporation, cap table management, stock issuance, corporate governance and compliance in one single platform. The platform is built using React, AWS Lambda (Node.js), AWS DynamoDB, AWS AppSync and a host of other AWS services.`,
       color: "#0879bf",
     },
     {
