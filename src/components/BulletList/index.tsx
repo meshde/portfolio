@@ -12,7 +12,7 @@ const BulletList: React.FC<Props> = ({ title, list }) => {
   `;
   const Title = styled.div`
     &:before {
-      content: "${showList ? "▼" : "▶"}    ";
+      content: "${showList ? "🔽" : "▶️"}    ";
       font-size: small;
     }
 
